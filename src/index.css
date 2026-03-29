@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-brown: #5b3920;
+  --color-brand-brown-dark: #452a17;
+  --color-brand-cream: #f7f0e4;
+  --font-display: "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background:
+      radial-gradient(circle at top, rgba(255, 255, 255, 0.72), transparent 55%),
+      #f7f0e4;
+    color: #3b2c18;
+    font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+@layer components {
+  .section-bg-one {
+    background-image:
+      linear-gradient(rgba(247, 240, 228, 0.86), rgba(247, 240, 228, 0.88)),
+      url("/bg1.png");
+    background-position: center;
+    background-size: cover;
+  }
+
+  .section-bg-two {
+    background-image:
+      linear-gradient(rgba(255, 251, 245, 0.88), rgba(255, 251, 245, 0.9)),
+      url("/bg2.png");
+    background-position: center;
+    background-size: cover;
+  }
+}
