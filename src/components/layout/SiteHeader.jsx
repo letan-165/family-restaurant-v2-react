@@ -4,9 +4,10 @@ import { navigation } from "../../data/siteData.js";
 
 function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const mobileNavClass = menuOpen ? "flex" : "hidden";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-amber-950/10 bg-[rgba(91,57,32,0.96)] text-white backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-brown text-white">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
         <NavLink
           to="/"
@@ -16,19 +17,19 @@ function SiteHeader() {
           <img
             src="/logo.png"
             alt="Logo quán Cô Lệ"
-            className="h-14 w-auto rounded-full bg-white/10 p-1 shadow-sm sm:h-16"
+            className="h-14 w-auto rounded-xl bg-white/10 p-1 sm:h-16"
           />
           <div>
-            <p className="font-display text-lg font-semibold uppercase tracking-[0.18em] text-amber-100">
+            <p className="font-display text-lg font-semibold uppercase text-white">
               Quán Cô Lệ
             </p>
-            <p className="text-sm text-amber-50/80">Bún nước tôm bò</p>
+            <p className="text-sm text-white/80">Bún nước tôm bò</p>
           </div>
         </NavLink>
 
         <button
           type="button"
-          className="inline-flex rounded-full border border-white/20 px-4 py-2 text-sm font-semibold md:hidden"
+          className="inline-flex rounded-xl border border-white/20 px-4 py-2 text-sm font-semibold md:hidden"
           onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-label="Mở menu điều hướng"
@@ -37,9 +38,7 @@ function SiteHeader() {
         </button>
 
         <nav
-          className={`${
-            menuOpen ? "flex" : "hidden"
-          } absolute inset-x-4 top-full mt-2 flex-col rounded-3xl border border-white/10 bg-[rgba(72,43,23,0.98)] p-3 shadow-xl md:static md:mt-0 md:flex md:flex-row md:items-center md:gap-2 md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
+          className={`${mobileNavClass} absolute inset-x-4 top-full mt-2 flex-col rounded-2xl border border-white/10 bg-brand-brown-dark p-3 shadow-sm md:static md:mt-0 md:flex md:flex-row md:items-center md:gap-2 md:border-0 md:bg-transparent md:p-0 md:shadow-none`}
         >
           {navigation.map((item) => (
             <NavLink
@@ -48,9 +47,9 @@ function SiteHeader() {
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 [
-                  "rounded-full px-4 py-2 text-sm font-semibold transition",
+                  "rounded-xl px-4 py-2 text-sm font-semibold transition",
                   isActive
-                    ? "bg-amber-100 text-amber-950"
+                    ? "bg-white text-brand-brown"
                     : "text-white/85 hover:bg-white/10 hover:text-white",
                 ].join(" ")
               }

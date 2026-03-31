@@ -1,54 +1,45 @@
 export const navigation = [
-  { label: "Giới thiệu", to: "/" },
-  { label: "Thực đơn", to: "/menu" },
-  { label: "Liên hệ", to: "/contact" },
+  { label: "GIỚI THIỆU", to: "/" },
+  { label: "THỰC ĐƠN", to: "/menu" },
+  { label: "LIÊN HỆ", to: "/contact" },
 ];
 
-export const heroSlides = [
-  {
-    image: "/banner.png",
-    alt: "Banner quán Cô Lệ",
-  },
-  {
-    image: "/banner2.png",
-    alt: "Món bún nước tại quán Cô Lệ",
-  },
-  {
-    image: "/banner3.png",
-    alt: "Không gian và món ăn tại quán Cô Lệ",
-  },
+export const bannerHome = [
+  { image: "/banner.png", alt: "Banner quán Cô Lệ" },
+  { image: "/banner2.png", alt: "Món ăn quán Cô Lệ" },
+  { image: "/banner3.png", alt: "Không gian quán Cô Lệ" },
 ];
 
 export const gallerySpaces = [
   {
     image: "/space1.png",
-    alt: "Không gian ngoài trời quán Cô Lệ",
-    title: "Thoáng mát ngoài trời",
+    alt: "Không gian ngoài trời quán Bún nước Cô Lệ",
+    title: "Ngoài trời thoáng mát, có mái che",
   },
   {
     image: "/space2.png",
-    alt: "Không gian bên trong quán Cô Lệ",
-    title: "Sạch sẽ và gọn gàng",
+    alt: "Không gian trong nhà quán Bún nước Cô Lệ",
+    title: "Bên trong quán gọn gàng, sạch sẽ, mát mẻ và thoải mái",
   },
   {
     image: "/space3.png",
-    alt: "Không gian trước quán Cô Lệ",
-    title: "Thư giãn trước hiên quán",
+    alt: "Không gian thư giãn trước nhà quán Bún nước Cô Lệ",
+    title: "Không gian trước nhà mát mẻ thư giãn",
   },
 ];
 
 export const mainDishes = [
-  { name: "Bún nước bò tôm", price: 35000, image: "/food-bun.png" },
-  { name: "Bún nước đặc biệt", price: 50000, image: "/food-bun.png" },
-  { name: "Mì trộn bò tôm", price: 35000, image: "/food-mi.png" },
-  { name: "Mì trộn đặc biệt", price: 50000, image: "/food-mi.png" },
+  { name: "Bún nước Tôm Bò", price: 35000, image: "/food-bun.png" },
+  { name: "Bún nước Đặc Biệt", price: 50000, image: "/food-bun.png" },
+  { name: "Mì trộn Tôm Bò", price: 35000, image: "/food-mi.png" },
+  { name: "Mì trộn Đặc Biệt", price: 50000, image: "/food-mi.png" },
 ];
 
 export const extraDishes = [
-  { name: "Thêm trứng", price: 5000, image: "/food-trung.png" },
-  { name: "Thêm bò viên", price: 5000, image: "/food-bovien.png" },
-  { name: "Thêm chả", price: 5000, image: "/food-cha.png" },
-  { name: "Thêm mì", price: 10000, image: "/food-mithem.png" },
+  { name: "Thêm Trứng", price: 5000, image: "/food-trung.png" },
+  { name: "Thêm Bò Viên", price: 5000, image: "/food-bovien.png" },
+  { name: "Thêm Chả", price: 5000, image: "/food-cha.png" },
+  { name: "Thêm Mì Trộn", price: 10000, image: "/food-mithem.png" },
 ];
 
 export const platforms = [
@@ -68,14 +59,15 @@ export const platforms = [
     image: "/befood.png",
   },
   {
-    name: "Xanh SM Ngon",
+    name: "Xanh SM",
     href: "https://xanhsmngon.onelink.me/ch/14WJ/zq4cbkpm",
     image: "/xanhsm.png",
   },
 ];
 
 export const aboutParagraphs = [
-  "Nằm ngay tại 41 Nguyễn Công Hoan, quán mang đến những tô bún nước được chăm chút từ nguyên liệu đến hương vị. Tôm tươi, thịt bò sạch, chả thơm cùng phần nước lèo đậm đà tạo nên cảm giác quen mà vẫn rất riêng.",
-  "Mỗi công đoạn chế biến đều được thực hiện kỹ lưỡng, giữ sự sạch sẽ và chỉn chu để thực khách có thể yên tâm thưởng thức bữa ăn trọn vẹn trong không gian gần gũi, thoải mái.",
-  "Nếu bạn đang tìm một quán bún nước ngon ở Phú Nhuận, đây là nơi để ghé qua và cảm nhận vị ngon chân thật trong từng tô bún.",
+  "Nằm ngay trên đường 41 Nguyễn Công Hoan.",
+  "Tại quán Bún nước Cô Lệ, mỗi tô bún nước là sự kết hợp tinh tế giữa hương vị truyền thống và chất lượng chuẩn mực. Nguyên liệu được tuyển chọn kỹ lưỡng: tôm tươi trong ngày, thịt bò sạch, chả thơm và phần nước lèo được chế biến khéo léo, mang vị ngọt thanh tự nhiên, đậm đà khó quên.",
+  "Mỗi khâu chế biến đều được thực hiện vô cùng kĩ lưỡng và sạch sẽ đảm bảo vệ sinh để mang đến cho thực khách trải nghiệm ẩm thực trọn vẹn nhất.",
+  "Hãy đến và cảm nhận vị ngon chân thật - nơi uy tín và chất lượng được đặt lên hàng đầu trong từng tô bún phục vụ bạn.",
 ];

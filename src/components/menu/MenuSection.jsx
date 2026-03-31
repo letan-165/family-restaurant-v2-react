@@ -10,18 +10,16 @@ function MenuSection({ items, onUpdateQuantity, quantities, title }) {
         </h2>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
         {items.map((item) => {
           const quantity = quantities[item.name] || 0;
+          const cardStateClass =
+            quantity > 0 ? "border-brand-brown" : "border-stone-200";
 
           return (
             <article
               key={item.name}
-              className={`overflow-hidden rounded-[1.75rem] border bg-white/90 shadow-[0_18px_48px_rgba(91,57,32,0.12)] transition ${
-                quantity > 0
-                  ? "border-emerald-400 ring-2 ring-emerald-100"
-                  : "border-[#a67b5b]/30"
-              }`}
+              className={`overflow-hidden rounded-2xl border bg-white shadow-sm transition ${cardStateClass}`}
             >
               <img
                 src={item.image}

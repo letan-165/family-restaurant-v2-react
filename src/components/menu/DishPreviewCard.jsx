@@ -2,7 +2,7 @@ import { formatCurrency } from "../../utils/format.js";
 
 function DishPreviewCard({ dish }) {
   return (
-    <article className="overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/85 text-left shadow-[0_18px_48px_rgba(91,57,32,0.12)] transition hover:-translate-y-1">
+    <article className="overflow-hidden rounded-2xl border border-stone-200 bg-white text-left shadow-sm transition hover:-translate-y-1">
       <img
         src={dish.image}
         alt={dish.name}
