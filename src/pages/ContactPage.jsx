@@ -1,4 +1,5 @@
-import InfoBlock from "../components/common/InfoBlock.jsx";
+import InfoText from "../components/text/InfoText.jsx";
+import SectionTitle from "../components/text/SectionTitle.jsx";
 import { platforms } from "../data/siteData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 
@@ -10,7 +11,7 @@ function ContactPage() {
       <div className="page-wrap">
         <div className="card">
           <div className="mb-8 text-center">
-            <h1 className="section-title">* LIÊN HỆ *</h1>
+            <SectionTitle title="* LIÊN HỆ *" center />
             <p className="section-text mx-auto mt-4 max-w-2xl">
               Mọi thắc mắc về chất lượng, dịch vụ, vui lòng liên hệ thông tin
               dưới đây để được hỗ trợ.
@@ -27,14 +28,14 @@ function ContactPage() {
             </div>
 
             <div className="p-6 sm:p-8">
-              <InfoBlock title="Địa chỉ cụ thể:">
+              <InfoText title="Địa chỉ cụ thể:">
                 <p>41 Nguyễn Công Hoan, Phường Cầu Kiệu, TP.HCM</p>
-              </InfoBlock>
+              </InfoText>
 
-              <InfoBlock title="Liên lạc:">
+              <InfoText title="Liên lạc:">
                 <p>ĐT / Zalo: 0903083108</p>
                 <p>Gmail: bunnuoccole@gmail.com</p>
-              </InfoBlock>
+              </InfoText>
 
               <div>
                 <h2 className="text-lg font-bold text-brand-brown">
@@ -54,7 +55,7 @@ function ContactPage() {
                         alt={platform.name}
                         className="h-10 w-10 object-contain"
                       />
-                      <span className="text-sm font-semibold text-stone-700 transition group-hover:text-brand-brown">
+                      <span className="text-sm font-semibold">
                         {platform.name}
                       </span>
                     </a>

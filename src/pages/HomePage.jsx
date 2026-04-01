@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
-import BannerHome from "../components/home/BannerHome.jsx";
-import GalleryCard from "../components/home/GalleryCard.jsx";
-import DishPreviewCard from "../components/menu/DishPreviewCard.jsx";
+import BannerCard from "../components/card/BannerCard.jsx";
+import DishCard from "../components/card/DishCard.jsx";
+import SpaceCard from "../components/card/SpaceCard.jsx";
+import SectionTitle from "../components/text/SectionTitle.jsx";
 import {
   aboutParagraphs,
   gallerySpaces,
@@ -23,7 +24,7 @@ function HomePage() {
               Bún nước Tôm Bò
             </h1>
           </div>
-          <BannerHome />
+          <BannerCard />
         </div>
       </section>
 
@@ -31,10 +32,10 @@ function HomePage() {
         <div className="page-wrap grid gap-10">
           <div className="card grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <p className="section-label">Về chúng tôi</p>
-              <h2 className="section-title">
-                Quán Bún nước Cô Lệ - Bún nước Tôm Bò
-              </h2>
+              <SectionTitle
+                label="Về chúng tôi"
+                title="Quán Bún nước Cô Lệ - Bún nước Tôm Bò"
+              />
               <div className="section-text mt-5 space-y-4">
                 {aboutParagraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
@@ -55,17 +56,17 @@ function HomePage() {
 
       <section className="section-bg-one py-14">
         <div className="page-wrap">
-          <div className="card">
+          <div className="card border-brand-brown/10 bg-[#f6eee4]">
             <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <div>
-                <p className="section-label">Không gian quán</p>
-                <h2 className="section-title">Có chỗ để xe miễn phí</h2>
-              </div>
+              <SectionTitle
+                label="Không gian quán"
+                title="Có chỗ để xe miễn phí"
+              />
             </div>
 
             <div className="grid gap-5 md:grid-cols-3">
               {gallerySpaces.map((space) => (
-                <GalleryCard
+                <SpaceCard
                   key={space.image}
                   image={space.image}
                   alt={space.alt}
@@ -80,11 +81,14 @@ function HomePage() {
       <section className="section-bg-two py-14 text-center">
         <div className="page-wrap">
           <div className="card">
-            <p className="section-label">Món ăn chính</p>
-            <h2 className="section-title">Được nhiều người gọi nhất</h2>
+            <SectionTitle
+              label="Món ăn chính"
+              title="Được nhiều người gọi nhất"
+              center
+            />
             <div className="mt-8 grid grid-cols-2 gap-4 xl:grid-cols-4">
               {mainDishes.map((dish) => (
-                <DishPreviewCard key={dish.name} dish={dish} />
+                <DishCard key={dish.name} dish={dish} />
               ))}
             </div>
             <div className="mt-8">

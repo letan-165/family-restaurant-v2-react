@@ -1,4 +1,4 @@
-function InfoBlock({ children, title }) {
+function InfoText({ children, title }) {
   return (
     <div>
       <h2 className="text-lg font-bold text-brand-brown">{title}</h2>
@@ -9,4 +9,4 @@ function InfoBlock({ children, title }) {
   );
 }
 
-export default InfoBlock;
+export default InfoText;

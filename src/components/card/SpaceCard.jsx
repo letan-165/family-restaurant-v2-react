@@ -1,4 +1,4 @@
-function GalleryCard({ alt, image, title }) {
+function SpaceCard({ alt, image, title }) {
   return (
     <article className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition hover:-translate-y-1">
       <img src={image} alt={alt} className="h-72 w-full object-cover" />
@@ -9,4 +9,4 @@ function GalleryCard({ alt, image, title }) {
   );
 }
 
-export default GalleryCard;
+export default SpaceCard;

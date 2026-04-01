@@ -1,5 +1,6 @@
 import { useState } from "react";
-import MenuSection from "../components/menu/MenuSection.jsx";
+import MenuGrid from "../components/common/MenuGrid.jsx";
+import SectionTitle from "../components/text/SectionTitle.jsx";
 import { extraDishes, mainDishes } from "../data/siteData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { formatCurrency } from "../utils/format.js";
@@ -31,16 +32,16 @@ function MenuPage() {
               {formatCurrency(total)}
             </span>
           </p>
-          <p className="mt-1 text-xs text-white/70">Đặt món cập nhật sau.</p>
         </div>
 
-        <MenuSection
+        <SectionTitle title="THỰC ĐƠN" />
+        <MenuGrid
           title="MÓN CHÍNH"
           items={mainDishes}
           quantities={quantities}
           onUpdateQuantity={updateQuantity}
         />
-        <MenuSection
+        <MenuGrid
           title="MÓN THÊM"
           items={extraDishes}
           quantities={quantities}

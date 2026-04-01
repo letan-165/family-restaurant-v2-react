@@ -1,4 +1,4 @@
-function CarouselButton({ children, label, onClick }) {
+function ArrowButton({ children, label, onClick }) {
   return (
     <button
       type="button"
@@ -11,4 +11,4 @@ function CarouselButton({ children, label, onClick }) {
   );
 }
 
-export default CarouselButton;
+export default ArrowButton;

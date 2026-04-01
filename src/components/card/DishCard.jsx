@@ -1,6 +1,6 @@
 import { formatCurrency } from "../../utils/format.js";
 
-function DishPreviewCard({ dish }) {
+function DishCard({ dish }) {
   return (
     <article className="overflow-hidden rounded-2xl border border-stone-200 bg-white text-left shadow-sm transition hover:-translate-y-1">
       <img
@@ -18,4 +18,4 @@ function DishPreviewCard({ dish }) {
   );
 }
 
-export default DishPreviewCard;
+export default DishCard;

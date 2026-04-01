@@ -3,8 +3,6 @@
 @theme {
   --color-brand-brown: #5b3920;
   --color-brand-brown-dark: #452a17;
-  --color-brand-surface: #ffffff;
-  --color-brand-text: #44403c;
   --font-display: "Segoe UI", "Helvetica Neue", sans-serif;
 }
 
@@ -15,6 +13,7 @@
 
   body {
     min-width: 320px;
+    background: #f5f5f4;
     color: #44403c;
     font-family: "Segoe UI", "Helvetica Neue", sans-serif;
   }
@@ -58,4 +57,36 @@
 
 .btn-primary {
   @apply inline-flex rounded-xl bg-brand-brown px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-brown-dark;
+}
+
+.header-site {
+  @apply sticky top-0 z-50 border-b border-white/10 bg-brand-brown text-white;
+}
+
+.header-wrap {
+  @apply mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-3 sm:px-6;
+}
+
+.header-logo {
+  @apply flex items-center gap-3;
+}
+
+.header-menu-button {
+  @apply inline-flex rounded-xl border border-white/20 px-4 py-2 text-sm font-semibold md:hidden;
+}
+
+.header-nav {
+  @apply absolute inset-x-4 top-full mt-2 flex-col rounded-2xl border border-white/10 bg-brand-brown-dark p-3 shadow-sm md:static md:mt-0 md:flex md:flex-row md:items-center md:gap-2 md:border-0 md:bg-transparent md:p-0 md:shadow-none;
+}
+
+.header-link {
+  @apply rounded-xl px-4 py-2 text-sm font-semibold transition;
+}
+
+.header-link-active {
+  @apply bg-white text-brand-brown;
+}
+
+.header-link-idle {
+  @apply text-white/85 hover:bg-white/10 hover:text-white;
 }

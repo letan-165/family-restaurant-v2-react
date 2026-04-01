@@ -1,7 +1,7 @@
-import QuantityButton from "../common/QuantityButton.jsx";
+import QuantityButton from "../button/QuantityButton.jsx";
 import { formatCurrency } from "../../utils/format.js";
 
-function MenuSection({ items, onUpdateQuantity, quantities, title }) {
+function MenuGrid({ items, onUpdateQuantity, quantities, title }) {
   return (
     <section className="mb-10">
       <div className="mb-4">
@@ -62,4 +62,4 @@ function MenuSection({ items, onUpdateQuantity, quantities, title }) {
   );
 }
 
-export default MenuSection;
+export default MenuGrid;

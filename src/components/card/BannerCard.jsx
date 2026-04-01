@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { bannerHome } from "../../data/siteData.js";
-import CarouselButton from "../common/CarouselButton.jsx";
+import ArrowButton from "../button/ArrowButton.jsx";
 
-function BannerHome() {
+function BannerCard() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ function BannerHome() {
         </div>
 
         <div className="flex gap-2">
-          <CarouselButton
+          <ArrowButton
             label="Ảnh trước"
             onClick={() =>
               setActiveIndex((current) =>
@@ -55,19 +55,19 @@ function BannerHome() {
             }
           >
             ←
-          </CarouselButton>
-          <CarouselButton
+          </ArrowButton>
+          <ArrowButton
             label="Ảnh sau"
             onClick={() =>
               setActiveIndex((current) => (current + 1) % bannerHome.length)
             }
           >
             →
-          </CarouselButton>
+          </ArrowButton>
         </div>
       </div>
     </div>
   );
 }
 
-export default BannerHome;
+export default BannerCard;
