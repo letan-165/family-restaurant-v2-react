@@ -12,7 +12,7 @@ function ContactPage() {
         <div className="card">
           <div className="mb-8 text-center">
             <SectionTitle title="* LIÊN HỆ *" center />
-            <p className="section-text mx-auto mt-4 max-w-2xl">
+            <p className="mx-auto mt-4 max-w-2xl text-base text-stone-700">
               Mọi thắc mắc về chất lượng, dịch vụ, vui lòng liên hệ thông tin
               dưới đây để được hỗ trợ.
             </p>

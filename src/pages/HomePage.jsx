@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import TextButton from "../components/button/TextButton.jsx";
 import BannerCard from "../components/card/BannerCard.jsx";
 import DishCard from "../components/card/DishCard.jsx";
 import SpaceCard from "../components/card/SpaceCard.jsx";
@@ -6,8 +7,8 @@ import SectionTitle from "../components/text/SectionTitle.jsx";
 import {
   aboutParagraphs,
   gallerySpaces,
-  mainDishes,
 } from "../data/siteData.js";
+import { mainDishes } from "../data/mockData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 
 function HomePage() {
@@ -28,7 +29,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section-bg-two">
+      <section className="section-bg-two py-10">
         <div className="page-wrap grid gap-10">
           <div className="card grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
             <div>
@@ -36,7 +37,7 @@ function HomePage() {
                 label="Về chúng tôi"
                 title="Quán Bún nước Cô Lệ - Bún nước Tôm Bò"
               />
-              <div className="section-text mt-5 space-y-4">
+              <div className="mt-5 space-y-4 text-base text-stone-700">
                 {aboutParagraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -54,7 +55,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section-bg-one py-14">
+      <section className="section-bg-one py-10">
         <div className="page-wrap">
           <div className="card border-brand-brown/10 bg-[#f6eee4]">
             <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -78,7 +79,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="section-bg-two py-14 text-center">
+      <section className="section-bg-two py-10 text-center">
         <div className="page-wrap">
           <div className="card">
             <SectionTitle
@@ -92,9 +93,9 @@ function HomePage() {
               ))}
             </div>
             <div className="mt-8">
-              <NavLink to="/menu" className="btn-primary">
+              <TextButton as={NavLink} to="/menu">
                 Xem chi tiết
-              </NavLink>
+              </TextButton>
             </div>
           </div>
         </div>

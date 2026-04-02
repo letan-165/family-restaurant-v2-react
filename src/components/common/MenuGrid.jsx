@@ -1,7 +1,7 @@
-import QuantityButton from "../button/QuantityButton.jsx";
+import IconButton from "../button/IconButton.jsx";
 import { formatCurrency } from "../../utils/format.js";
 
-function MenuGrid({ items, onUpdateQuantity, quantities, title }) {
+function MenuGrid({ items, onAddToCart, title }) {
   return (
     <section className="mb-10">
       <div className="mb-4">
@@ -11,52 +11,44 @@ function MenuGrid({ items, onUpdateQuantity, quantities, title }) {
       </div>
 
       <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
-        {items.map((item) => {
-          const quantity = quantities[item.name] || 0;
-          const cardStateClass =
-            quantity > 0 ? "border-brand-brown" : "border-stone-200";
+        {items.map((item) => (
+          <article
+            key={item.name}
+            className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
+          >
+            <img
+              src={item.image}
+              alt={item.name}
+              className="h-56 w-full object-cover"
+            />
 
-          return (
-            <article
-              key={item.name}
-              className={`overflow-hidden rounded-2xl border bg-white shadow-sm transition ${cardStateClass}`}
-            >
-              <img
-                src={item.image}
-                alt={item.name}
-                className="h-56 w-full object-cover"
-              />
-              <div className="space-y-4 p-5 text-center">
-                <div>
-                  <h3 className="text-lg font-bold text-brand-brown">
-                    {item.name}
-                  </h3>
-                  <p className="mt-1 text-sm font-semibold text-stone-600">
-                    {formatCurrency(item.price)}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-center gap-3">
-                  <QuantityButton
-                    label={`Giảm số lượng ${item.name}`}
-                    onClick={() => onUpdateQuantity(item.name, -1)}
-                  >
-                    -
-                  </QuantityButton>
-                  <span className="min-w-8 text-lg font-bold text-brand-brown">
-                    {quantity}
-                  </span>
-                  <QuantityButton
-                    label={`Tăng số lượng ${item.name}`}
-                    onClick={() => onUpdateQuantity(item.name, 1)}
-                  >
-                    +
-                  </QuantityButton>
-                </div>
+            <div className="space-y-4 p-5 text-center">
+              <div>
+                <h3 className="text-lg font-bold text-brand-brown">
+                  {item.name}
+                </h3>
+                <p className="mt-1 text-sm font-semibold text-stone-600">
+                  {formatCurrency(item.price)}
+                </p>
               </div>
-            </article>
-          );
-        })}
+
+              <div className="flex justify-center bg-brand-brown">
+                <IconButton
+                  label={`Thêm ${item.name} vào giỏ hàng`}
+                  onClick={() => onAddToCart(item)}
+                  variant="outline"
+                >
+                  <img
+                    src="/addCart.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-5 w-5 object-contain"
+                  />
+                </IconButton>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

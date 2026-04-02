@@ -4,6 +4,14 @@ export const navigation = [
   { label: "LIÊN HỆ", to: "/contact" },
 ];
 
+export const orderStatuses = [
+  "Chờ xác nhận",
+  "Đang chuẩn bị",
+  "Đang giao",
+  "Đã hoàn thành",
+  "Đã hủy",
+];
+
 export const bannerHome = [
   { image: "/banner.png", alt: "Banner quán Cô Lệ" },
   { image: "/banner2.png", alt: "Món ăn quán Cô Lệ" },
@@ -26,20 +34,6 @@ export const gallerySpaces = [
     alt: "Không gian thư giãn trước nhà quán Bún nước Cô Lệ",
     title: "Không gian trước nhà mát mẻ thư giãn",
   },
-];
-
-export const mainDishes = [
-  { name: "Bún nước Tôm Bò", price: 35000, image: "/food-bun.png" },
-  { name: "Bún nước Đặc Biệt", price: 50000, image: "/food-bun.png" },
-  { name: "Mì trộn Tôm Bò", price: 35000, image: "/food-mi.png" },
-  { name: "Mì trộn Đặc Biệt", price: 50000, image: "/food-mi.png" },
-];
-
-export const extraDishes = [
-  { name: "Thêm Trứng", price: 5000, image: "/food-trung.png" },
-  { name: "Thêm Bò Viên", price: 5000, image: "/food-bovien.png" },
-  { name: "Thêm Chả", price: 5000, image: "/food-cha.png" },
-  { name: "Thêm Mì Trộn", price: 10000, image: "/food-mithem.png" },
 ];
 
 export const platforms = [
@@ -68,6 +62,6 @@ export const platforms = [
 export const aboutParagraphs = [
   "Nằm ngay trên đường 41 Nguyễn Công Hoan.",
   "Tại quán Bún nước Cô Lệ, mỗi tô bún nước là sự kết hợp tinh tế giữa hương vị truyền thống và chất lượng chuẩn mực. Nguyên liệu được tuyển chọn kỹ lưỡng: tôm tươi trong ngày, thịt bò sạch, chả thơm và phần nước lèo được chế biến khéo léo, mang vị ngọt thanh tự nhiên, đậm đà khó quên.",
-  "Mỗi khâu chế biến đều được thực hiện vô cùng kĩ lưỡng và sạch sẽ đảm bảo vệ sinh để mang đến cho thực khách trải nghiệm ẩm thực trọn vẹn nhất.",
+  "Mỗi khâu chế biến đều được thực hiện vô cùng kỹ lưỡng và sạch sẽ đảm bảo vệ sinh để mang đến cho thực khách trải nghiệm ẩm thực trọn vẹn nhất.",
   "Hãy đến và cảm nhận vị ngon chân thật - nơi uy tín và chất lượng được đặt lên hàng đầu trong từng tô bún phục vụ bạn.",
 ];

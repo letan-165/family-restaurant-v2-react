@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { bannerHome } from "../../data/siteData.js";
-import ArrowButton from "../button/ArrowButton.jsx";
+import IconButton from "../button/IconButton.jsx";
 
 function BannerCard() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -35,9 +35,7 @@ function BannerCard() {
               key={slide.image}
               type="button"
               className={`h-3 rounded-full transition ${
-                index === activeIndex
-                  ? "w-10 bg-brand-brown"
-                  : "w-3 bg-stone-300"
+                index === activeIndex ? "w-10 bg-brand-brown" : "w-3 bg-stone-300"
               }`}
               onClick={() => setActiveIndex(index)}
               aria-label={`Chuyển đến ảnh ${index + 1}`}
@@ -46,8 +44,10 @@ function BannerCard() {
         </div>
 
         <div className="flex gap-2">
-          <ArrowButton
+          <IconButton
             label="Ảnh trước"
+            size="lg"
+            variant="outline"
             onClick={() =>
               setActiveIndex((current) =>
                 current === 0 ? bannerHome.length - 1 : current - 1,
@@ -55,15 +55,17 @@ function BannerCard() {
             }
           >
             ←
-          </ArrowButton>
-          <ArrowButton
+          </IconButton>
+          <IconButton
             label="Ảnh sau"
+            size="lg"
+            variant="outline"
             onClick={() =>
               setActiveIndex((current) => (current + 1) % bannerHome.length)
             }
           >
             →
-          </ArrowButton>
+          </IconButton>
         </div>
       </div>
     </div>
