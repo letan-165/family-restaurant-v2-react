@@ -43,9 +43,9 @@ function OrderPage() {
   }
 
   return (
-    <section className="section-bg-two min-h-[calc(100vh-8rem)] py-10 sm:py-12">
+    <section className="page-section">
       <div className="page-wrap">
-        <div className="mx-auto grid max-w-5xl gap-6">
+        <div className="page-grid">
           <div className="card">
             <SectionTitle label="Đơn hàng" title="Xác nhận món đã chọn" />
             <p className="mt-3 text-sm text-stone-600">
@@ -54,7 +54,7 @@ function OrderPage() {
           </div>
 
           {!orderItems.length ? (
-            <div className="card text-center">
+            <div className="card card-empty">
               <p className="text-base text-stone-600">
                 Chưa có món nào được chọn để đặt.
               </p>

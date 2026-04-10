@@ -4,10 +4,7 @@ import TextButton from "../components/button/TextButton.jsx";
 import CartItemRow from "../components/common/CartItemRow.jsx";
 import OrderSummaryCard from "../components/common/OrderSummaryCard.jsx";
 import SectionTitle from "../components/text/SectionTitle.jsx";
-import {
-  getCartSummaryRows,
-  getMockCartItems,
-} from "../data/mockData.js";
+import { getCartSummaryRows, getMockCartItems } from "../data/mockData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { formatCurrency } from "../utils/format.js";
 
@@ -69,9 +66,9 @@ function CartPage() {
   }
 
   return (
-    <section className="section-bg-two min-h-[calc(100vh-8rem)] py-10 sm:py-12">
+    <section className="page-section">
       <div className="page-wrap">
-        <div className="mx-auto grid max-w-5xl gap-6">
+        <div className="page-grid">
           <div className="card">
             <SectionTitle label="Giỏ hàng" title="Món ăn bạn đã chọn" />
             <p className="mt-3 text-sm text-stone-600">
@@ -124,15 +121,15 @@ function CartPage() {
               })}
               actions={
                 <>
-                <TextButton
-                  disabled={!selectedItems.length}
-                  onClick={openOrderPage}
-                >
-                  Đặt những món đã chọn
-                </TextButton>
-                <TextButton as={NavLink} to="/menu" variant="secondary">
-                  Tiếp tục xem thực đơn
-                </TextButton>
+                  <TextButton
+                    disabled={!selectedItems.length}
+                    onClick={openOrderPage}
+                  >
+                    Đặt những món đã chọn
+                  </TextButton>
+                  <TextButton as={NavLink} to="/menu" variant="secondary">
+                    Tiếp tục xem thực đơn
+                  </TextButton>
                 </>
               }
             />

@@ -20,10 +20,10 @@ function OrderDetailPage() {
 
   if (!order) {
     return (
-      <section className="section-bg-two min-h-[calc(100vh-8rem)] py-10 sm:py-12">
+      <section className="page-section">
         <div className="page-wrap">
           <div className="mx-auto max-w-5xl">
-            <div className="card text-center">
+            <div className="card card-empty">
               <p className="text-base text-stone-600">Không tìm thấy đơn hàng.</p>
               <div className="mt-4">
                 <TextButton as={NavLink} to="/order-status">
@@ -38,9 +38,9 @@ function OrderDetailPage() {
   }
 
   return (
-    <section className="section-bg-two min-h-[calc(100vh-8rem)] py-10 sm:py-12">
+    <section className="page-section">
       <div className="page-wrap">
-        <div className="mx-auto grid max-w-5xl gap-6">
+        <div className="page-grid">
           <div className="card">
             <SectionTitle label="Đơn hàng" title={`Chi tiết ${order.id}`} />
             <p className="mt-3 text-sm text-stone-600">

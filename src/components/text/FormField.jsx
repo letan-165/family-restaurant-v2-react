@@ -1,7 +1,6 @@
 function FormField({
   as = "input",
   defaultValue,
-  htmlFor,
   label,
   name,
   onChange,
@@ -10,11 +9,11 @@ function FormField({
   value,
 }) {
   return (
-    <label htmlFor={htmlFor} className="form-field">
+    <label htmlFor={name} className="form-field">
       <span className="form-label">{label}</span>
       {as === "textarea" ? (
         <textarea
-          id={htmlFor}
+          id={name}
           name={name}
           rows={rows}
           {...(value !== undefined ? { value } : { defaultValue })}
@@ -23,7 +22,7 @@ function FormField({
         />
       ) : (
         <input
-          id={htmlFor}
+          id={name}
           name={name}
           type={type}
           {...(type === "file"

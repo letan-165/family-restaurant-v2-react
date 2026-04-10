@@ -37,9 +37,9 @@ function ProfilePage() {
   }
 
   return (
-    <section className="section-bg-two min-h-[calc(100vh-8rem)] py-10 sm:py-12">
+    <section className="page-section">
       <div className="page-wrap">
-        <div className="mx-auto grid max-w-5xl gap-6">
+        <div className="page-grid">
           <div className="card flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-4">
               <img
@@ -60,7 +60,9 @@ function ProfilePage() {
               </div>
             </div>
 
-            <TextButton onClick={openEditDialog}>Chỉnh sửa thông tin</TextButton>
+            <TextButton onClick={openEditDialog}>
+              Chỉnh sửa thông tin
+            </TextButton>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">

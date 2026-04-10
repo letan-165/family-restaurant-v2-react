@@ -25,8 +25,8 @@ function HeaderSite() {
             className="h-14 w-auto rounded-xl bg-white/10 p-1 sm:h-16"
           />
           <div>
-            <p className="font-display text-lg font-semibold">QUAN CO LE</p>
-            <p className="text-sm text-white/80">Bun nuoc tom bo</p>
+            <p className="font-display text-lg font-semibold">QUÁN CÔ LỆ</p>
+            <p className="text-sm text-white/80">Bún nước Tôm Bò</p>
           </div>
         </NavLink>
 
@@ -111,13 +111,21 @@ function HeaderSite() {
                   {currentUser.name}
                 </p>
                 <p className="text-xs text-white/70">
-                  {currentUser.isLoggedIn ? "Chinh sua thong tin" : "Chua dang nhap"}
+                  {currentUser.isLoggedIn
+                    ? "Chỉnh sửa thông tin"
+                    : "Chưa đăng nhập"}
                 </p>
               </div>
             </NavLink>
 
-            <TextButton variant="header" className="rounded-2xl">
-              {currentUser.isLoggedIn ? "Dang xuat" : "Dang nhap"}
+            <TextButton
+              as={NavLink}
+              to="/auth"
+              variant="header"
+              className="rounded-2xl"
+              onClick={() => setMenuOpen(false)}
+            >
+              {currentUser.isLoggedIn ? "Đăng xuất" : "Đăng nhập"}
             </TextButton>
           </div>
         </div>

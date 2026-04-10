@@ -17,9 +17,9 @@ function OrderStatusPage() {
   );
 
   return (
-    <section className="section-bg-two min-h-[calc(100vh-8rem)] py-10 sm:py-12">
+    <section className="page-section">
       <div className="page-wrap">
-        <div className="mx-auto grid max-w-5xl gap-6">
+        <div className="page-grid">
           <div className="card">
             <SectionTitle label="Đơn hàng" title="Theo dõi trạng thái đơn" />
             <div className="mt-6 flex flex-wrap gap-3">
@@ -36,7 +36,7 @@ function OrderStatusPage() {
           </div>
 
           {!filteredOrders.length ? (
-            <div className="card text-center text-sm text-stone-600">
+            <div className="card card-empty text-sm text-stone-600">
               Hiện chưa có đơn hàng ở trạng thái này.
             </div>
           ) : (

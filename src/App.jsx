@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import LayoutSite from "./layouts/LayoutSite.jsx";
+import AuthPage from "./pages/AuthPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
@@ -14,6 +15,7 @@ function App() {
     <Routes>
       <Route element={<LayoutSite />}>
         <Route index element={<HomePage />} />
+        <Route path="/auth" element={<AuthPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/order" element={<OrderPage />} />

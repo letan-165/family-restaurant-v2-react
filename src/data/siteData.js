@@ -65,3 +65,44 @@ export const aboutParagraphs = [
   "Mỗi khâu chế biến đều được thực hiện vô cùng kỹ lưỡng và sạch sẽ đảm bảo vệ sinh để mang đến cho thực khách trải nghiệm ẩm thực trọn vẹn nhất.",
   "Hãy đến và cảm nhận vị ngon chân thật - nơi uy tín và chất lượng được đặt lên hàng đầu trong từng tô bún phục vụ bạn.",
 ];
+
+export const authTabs = [
+  { key: "login", label: "Đăng nhập" },
+  { key: "signup", label: "Đăng ký" },
+];
+
+export const loginFields = [
+  {
+    label: "Tên đăng nhập",
+    name: "username",
+    type: "text",
+  },
+  {
+    label: "Mật khẩu",
+    name: "password",
+    type: "password",
+  },
+];
+
+export const signupFields = [
+  {
+    label: "Tên tài khoản",
+    name: "username",
+    type: "text",
+  },
+  {
+    label: "Họ và tên",
+    name: "fullName",
+    type: "text",
+  },
+  {
+    label: "Email",
+    name: "email",
+    type: "email",
+  },
+  {
+    label: "Mật khẩu",
+    name: "password",
+    type: "password",
+  },
+];
