@@ -1,15 +1,53 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { profileService } from "../../api/services/profileService.js";
+import { navigation } from "../../data/siteData.js";
+import {
+  clearUserSession,
+  getUserSession,
+  saveUserSession,
+  subscribeUserSession,
+} from "../../utils/userSession.js";
 import IconButton from "../button/IconButton.jsx";
 import TextButton from "../button/TextButton.jsx";
-import { navigation } from "../../data/siteData.js";
 
 function HeaderSite() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const currentUser = {
-    isLoggedIn: false,
-    name: "Khach hang",
-  };
+  const [currentUser, setCurrentUser] = useState(() => getUserSession());
+
+  useEffect(() => {
+    function syncUserSession() {
+      setCurrentUser(getUserSession());
+    }
+
+    async function fetchProfile() {
+      const session = getUserSession();
+
+      if (!session.token) {
+        return;
+      }
+
+      try {
+        const response = await profileService.get();
+        saveUserSession(response?.result || {});
+      } catch {
+        syncUserSession();
+      }
+    }
+
+    syncUserSession();
+    fetchProfile();
+
+    return subscribeUserSession(syncUserSession);
+  }, []);
+
+  function handleAuthAction() {
+    if (currentUser.isLoggedIn) {
+      clearUserSession();
+    }
+
+    setMenuOpen(false);
+  }
 
   return (
     <header className="header-site">
@@ -33,7 +71,7 @@ function HeaderSite() {
         <div className="header-actions">
           <IconButton
             as={NavLink}
-            label="Mo trang thai don hang"
+            label="Mở trang trạng thái đơn hàng"
             size="lg"
             to="/order-status"
             variant="headerLight"
@@ -49,7 +87,7 @@ function HeaderSite() {
 
           <IconButton
             as={NavLink}
-            label="Mo gio hang"
+            label="Mở giỏ hàng"
             size="lg"
             to="/cart"
             variant="headerLight"
@@ -64,7 +102,7 @@ function HeaderSite() {
           </IconButton>
 
           <IconButton
-            label="Mo menu dieu huong"
+            label="Mở menu điều hướng"
             size="lg"
             variant="header"
             onClick={() => setMenuOpen((open) => !open)}
@@ -104,7 +142,15 @@ function HeaderSite() {
               className="header-profile-card"
             >
               <div className="header-avatar" aria-hidden="true">
-                {currentUser.name.charAt(0)}
+                {currentUser.avatar ? (
+                  <img
+                    src={currentUser.avatar}
+                    alt={currentUser.name}
+                    className="h-full w-full rounded-full object-cover"
+                  />
+                ) : (
+                  currentUser.name.charAt(0)
+                )}
               </div>
               <div>
                 <p className="text-sm font-semibold text-white">
@@ -123,7 +169,7 @@ function HeaderSite() {
               to="/auth"
               variant="header"
               className="rounded-2xl"
-              onClick={() => setMenuOpen(false)}
+              onClick={handleAuthAction}
             >
               {currentUser.isLoggedIn ? "Đăng xuất" : "Đăng nhập"}
             </TextButton>

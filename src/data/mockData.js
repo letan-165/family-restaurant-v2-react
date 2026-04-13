@@ -30,12 +30,6 @@ export const profileDisplayGroups = {
     { label: "Số điện thoại", valueKey: "phone" },
     { label: "Địa chỉ", valueKey: "address", className: "sm:col-span-2" },
   ],
-  account: [
-    { label: "Username", valueKey: "username" },
-    { label: "Email", valueKey: "email" },
-    { label: "Loại đăng nhập", valueKey: "typeLogin" },
-    { label: "Trạng thái", valueKey: "status" },
-  ],
 };
 
 export const profileEditFields = [
@@ -77,11 +71,7 @@ export function getCartSummaryRows({
   ];
 }
 
-export function getOrderSummaryRows({
-  itemCount,
-  totalAmount,
-  totalQuantity,
-}) {
+export function getOrderSummaryRows({ itemCount, totalAmount, totalQuantity }) {
   return [
     { label: "Số món", value: itemCount },
     { label: "Tổng số lượng", value: totalQuantity },

@@ -6,6 +6,7 @@ import FormField from "../components/text/FormField.jsx";
 import SectionTitle from "../components/text/SectionTitle.jsx";
 import { authTabs, loginFields, signupFields } from "../data/siteData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
+import { saveUserSession } from "../utils/userSession.js";
 
 function AuthPage() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function AuthPage() {
   const isLogin = activeTab === "login";
   const fields = isLogin ? loginFields : signupFields;
 
-  useDocumentTitle(`${isLogin ? "Đăng nhập" : "Đăng ký"} - Quán Cô Lệ`);
+  useDocumentTitle(`${isLogin ? "Dang nhap" : "Dang ky"} - Quan Co Le`);
 
   function resetForm(nextTab) {
     setActiveTab(nextTab);
@@ -43,24 +44,20 @@ function AuthPage() {
 
       if (isLogin) {
         const loginResult = response?.result || {};
-        const { fullname, token, userID } = loginResult;
+        const token = loginResult.token;
+        const userId = loginResult.userId || loginResult.userID;
+        const fullName = loginResult.fullName || loginResult.fullname;
 
-        if (userID) {
-          localStorage.setItem("userID", userID);
-        }
-
-        if (fullname) {
-          localStorage.setItem("fullname", fullname);
-        }
-
-        if (token) {
-          localStorage.setItem("token", token);
-        }
+        saveUserSession({
+          token,
+          userId,
+          fullName,
+        });
 
         window.alert("Đăng nhập thành công.");
         navigate("/");
       } else {
-        window.alert("Đăng ký thành công. Mời bạn đăng nhập.");
+        window.alert("Đăng ký thành công. Vui lòng đăng nhập.");
         setActiveTab("login");
         setFormData({});
       }
@@ -77,8 +74,8 @@ function AuthPage() {
         <div className="mx-auto grid max-w-3xl gap-6">
           <div className="card">
             <SectionTitle
-              label="Tài khoản"
-              title={isLogin ? "Đăng nhập" : "Tạo tài khoản"}
+              label="Tai khoan"
+              title={isLogin ? "Dang nhap" : "Tao tai khoan"}
               center
             />
 
