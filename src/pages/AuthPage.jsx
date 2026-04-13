@@ -4,9 +4,49 @@ import { authService } from "../api/services/authService.js";
 import TextButton from "../components/button/TextButton.jsx";
 import FormField from "../components/text/FormField.jsx";
 import SectionTitle from "../components/text/SectionTitle.jsx";
-import { authTabs, loginFields, signupFields } from "../data/siteData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { saveUserSession } from "../utils/userSession.js";
+
+const authTabs = [
+  { key: "login", label: "Đăng nhâp" },
+  { key: "signup", label: "Đăng kí" },
+];
+
+const loginFields = [
+  {
+    label: "Tên đăng nhập",
+    name: "username",
+    type: "text",
+  },
+  {
+    label: "Mật khẩu",
+    name: "password",
+    type: "password",
+  },
+];
+
+const signupFields = [
+  {
+    label: "Tên tài khoản",
+    name: "username",
+    type: "text",
+  },
+  {
+    label: "Họ và tên",
+    name: "fullName",
+    type: "text",
+  },
+  {
+    label: "Email",
+    name: "email",
+    type: "email",
+  },
+  {
+    label: "Mật khẩu",
+    name: "password",
+    type: "password",
+  },
+];
 
 function AuthPage() {
   const navigate = useNavigate();
@@ -17,7 +57,7 @@ function AuthPage() {
   const isLogin = activeTab === "login";
   const fields = isLogin ? loginFields : signupFields;
 
-  useDocumentTitle(`${isLogin ? "Dang nhap" : "Dang ky"} - Quan Co Le`);
+  useDocumentTitle(`${isLogin ? "Đăng nhập" : "Đăng kí"} - Quán Cô Lệ`);
 
   function resetForm(nextTab) {
     setActiveTab(nextTab);
@@ -54,10 +94,10 @@ function AuthPage() {
           fullName,
         });
 
-        window.alert("Đăng nhập thành công.");
+        window.alert("Dang nhap thanh cong.");
         navigate("/");
       } else {
-        window.alert("Đăng ký thành công. Vui lòng đăng nhập.");
+        window.alert("Đã đăng ký thành công. Xin vui lòng đăng nhập.");
         setActiveTab("login");
         setFormData({});
       }
@@ -75,7 +115,7 @@ function AuthPage() {
           <div className="card">
             <SectionTitle
               label="Tai khoan"
-              title={isLogin ? "Dang nhap" : "Tao tai khoan"}
+              title={isLogin ? "Đăng nhập" : "Đăng kí tài khoản"}
               center
             />
 
@@ -108,7 +148,7 @@ function AuthPage() {
                   ? "Đang xử lý..."
                   : isLogin
                     ? "Đăng nhập"
-                    : "Đăng ký"}
+                    : "Đăng kí"}
               </TextButton>
             </form>
 

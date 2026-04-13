@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
-import { bannerHome } from "../../data/siteData.js";
 import IconButton from "../button/IconButton.jsx";
 
-function BannerCard() {
+function BannerCard({ slides }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % bannerHome.length);
+      setActiveIndex((current) => (current + 1) % slides.length);
     }, 4000);
 
     return () => window.clearInterval(intervalId);
-  }, []);
+  }, [slides.length]);
 
   return (
     <div className="card overflow-hidden bg-white/80 p-3 sm:p-4">
       <div className="relative aspect-[16/8.2] overflow-hidden rounded-2xl">
-        {bannerHome.map((slide, index) => (
+        {slides.map((slide, index) => (
           <img
             key={slide.image}
             src={slide.image}
@@ -30,7 +29,7 @@ function BannerCard() {
 
       <div className="mt-4 flex items-center justify-between gap-4">
         <div className="flex gap-2">
-          {bannerHome.map((slide, index) => (
+          {slides.map((slide, index) => (
             <button
               key={slide.image}
               type="button"
@@ -38,33 +37,31 @@ function BannerCard() {
                 index === activeIndex ? "w-10 bg-brand-brown" : "w-3 bg-stone-300"
               }`}
               onClick={() => setActiveIndex(index)}
-              aria-label={`Chuyển đến ảnh ${index + 1}`}
+              aria-label={`Chuyen den anh ${index + 1}`}
             />
           ))}
         </div>
 
         <div className="flex gap-2">
           <IconButton
-            label="Ảnh trước"
+            label="Anh truoc"
             size="lg"
             variant="outline"
             onClick={() =>
               setActiveIndex((current) =>
-                current === 0 ? bannerHome.length - 1 : current - 1,
+                current === 0 ? slides.length - 1 : current - 1,
               )
             }
           >
-            ←
+            {"<-"}
           </IconButton>
           <IconButton
-            label="Ảnh sau"
+            label="Anh sau"
             size="lg"
             variant="outline"
-            onClick={() =>
-              setActiveIndex((current) => (current + 1) % bannerHome.length)
-            }
+            onClick={() => setActiveIndex((current) => (current + 1) % slides.length)}
           >
-            →
+            {"->"}
           </IconButton>
         </div>
       </div>

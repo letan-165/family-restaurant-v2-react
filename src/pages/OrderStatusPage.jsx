@@ -3,14 +3,17 @@ import TextButton from "../components/button/TextButton.jsx";
 import OrderStatusCard from "../components/common/OrderStatusCard.jsx";
 import SectionTitle from "../components/text/SectionTitle.jsx";
 import { getMockOrders } from "../data/mockData.js";
-import { orderStatuses } from "../data/siteData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 
 function OrderStatusPage() {
   useDocumentTitle("Trạng thái đơn hàng - Quán Cô Lệ");
 
-  const [activeStatus, setActiveStatus] = useState(orderStatuses[0]);
   const orders = useMemo(() => getMockOrders(), []);
+  const orderStatuses = useMemo(
+    () => [...new Set(orders.map((order) => order.status))],
+    [orders],
+  );
+  const [activeStatus, setActiveStatus] = useState(() => orderStatuses[0] || "");
   const filteredOrders = useMemo(
     () => orders.filter((order) => order.status === activeStatus),
     [activeStatus, orders],
@@ -21,7 +24,7 @@ function OrderStatusPage() {
       <div className="page-wrap">
         <div className="page-grid">
           <div className="card">
-            <SectionTitle label="Đơn hàng" title="Theo dõi trạng thái đơn" />
+            <SectionTitle label="Đơn hàng" title="Theo dõi trạng thái đơn hàng" />
             <div className="mt-6 flex flex-wrap gap-3">
               {orderStatuses.map((status) => (
                 <TextButton

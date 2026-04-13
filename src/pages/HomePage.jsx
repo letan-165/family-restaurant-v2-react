@@ -4,12 +4,39 @@ import BannerCard from "../components/card/BannerCard.jsx";
 import DishCard from "../components/card/DishCard.jsx";
 import SpaceCard from "../components/card/SpaceCard.jsx";
 import SectionTitle from "../components/text/SectionTitle.jsx";
-import {
-  aboutParagraphs,
-  gallerySpaces,
-} from "../data/siteData.js";
 import { mainDishes } from "../data/mockData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
+
+const bannerSlides = [
+  { image: "/banner.png", alt: "Banner quan Co Le" },
+  { image: "/banner2.png", alt: "Mon an quan Co Le" },
+  { image: "/banner3.png", alt: "Khong gian quan Co Le" },
+];
+
+const aboutParagraphs = [
+  "Nằm ngay trên đường 41 Nguyễn Công Hoan.",
+  "Tại quán Bún nước Cô Lệ, mỗi tô bún nước là sự kết hợp tinh tế giữa hương vị truyền thống và chất lượng chuẩn mức. Nguyên liệu được tuyển chọn kỹ lưỡng: tôm tươi trong ngày, thịt bò sạch, chả thơm và phần nước lèo được chế biến khéo léo, mang vị ngọt thanh tự nhiên, đậm đà khó quên.",
+  "Mỗi khẩu chế biến đều được thực hiện vô cùng kỹ lưỡng và sạch sẽ, đảm bảo vệ sinh để mang đến cho thực khách trải nghiệm ẩm thực trọn vẹn nhất.",
+  "ãy đến và cảm nhận vị ngon chân thật - nơi uy tín và chất lượng được đặt lên hàng đầu trong từng tô bun phục vụ.",
+];
+
+const gallerySpaces = [
+  {
+    image: "/space1.png",
+    alt: "Không gian ngoài trời quán Bún nước Cô Lệ",
+    title: "Ngoài trời thoáng mát, có mái che",
+  },
+  {
+    image: "/space2.png",
+    alt: "Không gian trong nhà quán Bún nước Cô Lệ",
+    title: "Trong quán gọn gàng, sạch sẽ, mát mẻ và thoải mái",
+  },
+  {
+    image: "/space3.png",
+    alt: "Không gian thư giãn trước nhà quán Bún nước Cô Lệ",
+    title: "Không gian trước nhà mát mẻ thư giãn",
+  },
+];
 
 function HomePage() {
   useDocumentTitle("Quán Cô Lệ - Bún nước tôm bò");
@@ -25,7 +52,7 @@ function HomePage() {
               Bún nước Tôm Bò
             </h1>
           </div>
-          <BannerCard />
+          <BannerCard slides={bannerSlides} />
         </div>
       </section>
 
@@ -61,7 +88,7 @@ function HomePage() {
             <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <SectionTitle
                 label="Không gian quán"
-                title="Có chỗ để xe miễn phí"
+                title="Có chỗ để xe miễn phí, thoáng mát và sạch sẽ"
               />
             </div>
 

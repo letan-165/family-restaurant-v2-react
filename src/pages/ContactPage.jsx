@@ -1,17 +1,39 @@
 import InfoText from "../components/text/InfoText.jsx";
 import SectionTitle from "../components/text/SectionTitle.jsx";
-import { platforms } from "../data/siteData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 
+const platforms = [
+  {
+    name: "TikTok",
+    href: "https://www.tiktok.com/@bunnuoccole?_r=1&_t=ZS-91T2z0OdsB8",
+    image: "/tiktok.png",
+  },
+  {
+    name: "ShopeeFood",
+    href: "https://shopeefood.vn/u/6VQ4igq",
+    image: "/shopeefood.png",
+  },
+  {
+    name: "beFood",
+    href: "https://begroup.onelink.me/ch/n83F/je6664qj",
+    image: "/befood.png",
+  },
+  {
+    name: "Xanh SM",
+    href: "https://xanhsmngon.onelink.me/ch/14WJ/zq4cbkpm",
+    image: "/xanhsm.png",
+  },
+];
+
 function ContactPage() {
-  useDocumentTitle("Liên hệ - Quán Cô Lệ");
+  useDocumentTitle("Lien he - Quan Co Le");
 
   return (
     <section className="section-bg-two py-12">
       <div className="page-wrap">
         <div className="card">
           <div className="mb-8 text-center">
-            <SectionTitle title="* LIÊN HỆ *" center />
+            <SectionTitle title="* LIEN HE *" center />
             <p className="mx-auto mt-4 max-w-2xl text-base text-stone-700">
               Mọi thắc mắc về chất lượng, dịch vụ, vui lòng liên hệ thông tin
               dưới đây để được hỗ trợ.
@@ -22,25 +44,23 @@ function ContactPage() {
             <div className="card-image">
               <img
                 src="/location.png"
-                alt="Bản đồ vị trí quán Cô Lệ"
+                alt="Ban do vi tri quan Co Le"
                 className="h-full min-h-80 w-full object-cover"
               />
             </div>
 
             <div className="p-6 sm:p-8">
               <InfoText title="Địa chỉ cụ thể:">
-                <p>41 Nguyễn Công Hoan, Phường Cầu Kiệu, TP.HCM</p>
+                <p>41 Nguyễn Công Hoan, Phường Cầu Kéo, TP.HCM</p>
               </InfoText>
 
               <InfoText title="Liên lạc:">
-                <p>ĐT / Zalo: 0903083108</p>
+                <p>DT / Zalo: 0903083108</p>
                 <p>Gmail: bunnuoccole@gmail.com</p>
               </InfoText>
 
               <div>
-                <h2 className="text-lg font-bold text-brand-brown">
-                  Nền tảng:
-                </h2>
+                <h2 className="text-lg font-bold text-brand-brown">Nền tảng:</h2>
                 <div className="mt-4 flex flex-wrap gap-3">
                   {platforms.map((platform) => (
                     <a

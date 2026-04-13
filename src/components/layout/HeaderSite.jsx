@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { profileService } from "../../api/services/profileService.js";
-import { navigation } from "../../data/siteData.js";
 import {
   clearUserSession,
   getUserSession,
@@ -10,6 +9,12 @@ import {
 } from "../../utils/userSession.js";
 import IconButton from "../button/IconButton.jsx";
 import TextButton from "../button/TextButton.jsx";
+
+const navigation = [
+  { label: "GIỚI THIỆU", to: "/" },
+  { label: "THỰC ĐƠN", to: "/menu" },
+  { label: "LIÊN HỆ", to: "/contact" },
+];
 
 function HeaderSite() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -71,7 +76,7 @@ function HeaderSite() {
         <div className="header-actions">
           <IconButton
             as={NavLink}
-            label="Mở trang trạng thái đơn hàng"
+            label="Mở trang thái đơn hàng"
             size="lg"
             to="/order-status"
             variant="headerLight"
