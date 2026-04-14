@@ -8,8 +8,8 @@ import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { saveUserSession } from "../utils/userSession.js";
 
 const authTabs = [
-  { key: "login", label: "Đăng nhâp" },
-  { key: "signup", label: "Đăng kí" },
+  { key: "login", label: "Đăng nhập" },
+  { key: "signup", label: "Đăng ký" },
 ];
 
 const loginFields = [
@@ -57,7 +57,7 @@ function AuthPage() {
   const isLogin = activeTab === "login";
   const fields = isLogin ? loginFields : signupFields;
 
-  useDocumentTitle(`${isLogin ? "Đăng nhập" : "Đăng kí"} - Quán Cô Lệ`);
+  useDocumentTitle(`${isLogin ? "Đăng nhập" : "Đăng ký"} - Quán Cô Lệ`);
 
   function resetForm(nextTab) {
     setActiveTab(nextTab);
@@ -94,7 +94,7 @@ function AuthPage() {
           fullName,
         });
 
-        window.alert("Dang nhap thanh cong.");
+        window.alert("Đăng nhập thành công.");
         navigate("/");
       } else {
         window.alert("Đã đăng ký thành công. Xin vui lòng đăng nhập.");
@@ -114,8 +114,8 @@ function AuthPage() {
         <div className="mx-auto grid max-w-3xl gap-6">
           <div className="card">
             <SectionTitle
-              label="Tai khoan"
-              title={isLogin ? "Đăng nhập" : "Đăng kí tài khoản"}
+              label="Tài khoản"
+              title={isLogin ? "Đăng nhập" : "Đăng ký tài khoản"}
               center
             />
 
@@ -143,24 +143,26 @@ function AuthPage() {
                 />
               ))}
 
-              <TextButton type="submit" className="mt-2" disabled={submitting}>
-                {submitting
-                  ? "Đang xử lý..."
-                  : isLogin
-                    ? "Đăng nhập"
-                    : "Đăng kí"}
+              <TextButton
+                type="submit"
+                className="mt-2"
+                loading={submitting}
+                loadingText="Đang xử lý..."
+              >
+                {isLogin ? "Đăng nhập" : "Đăng ký"}
               </TextButton>
             </form>
 
             <div className="mt-4 text-center text-sm text-stone-500">
               {isLogin ? "Chưa có tài khoản?" : "Đã có tài khoản?"}{" "}
-              <button
+              <TextButton
                 type="button"
-                className="font-medium text-brand-brown"
+                variant="ghost"
+                className="px-0 py-0 font-medium text-brand-brown"
                 onClick={() => resetForm(isLogin ? "signup" : "login")}
               >
                 {isLogin ? "Đăng ký ngay" : "Đăng nhập"}
-              </button>
+              </TextButton>
             </div>
           </div>
         </div>

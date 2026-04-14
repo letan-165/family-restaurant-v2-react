@@ -24,8 +24,8 @@ async function request(path, options = {}) {
   if (!response.ok) {
     const message =
       typeof data === "object" && data !== null
-        ? data.message || data.error || "Yeu cau that bai"
-        : data || "Yeu cau that bai";
+        ? data.message || data.error || "Yêu cầu thất bại"
+        : data || "Yêu cầu thất bại";
 
     throw new Error(message);
   }

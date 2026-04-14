@@ -2,6 +2,9 @@ function TextButton({
   as: Component = "button",
   children,
   className = "",
+  disabled = false,
+  loading = false,
+  loadingText = "Đang xử lý...",
   onClick,
   to,
   type = "button",
@@ -14,6 +17,8 @@ function TextButton({
       {...(Component === "button" ? { type } : {})}
       {...(to ? { to } : {})}
       onClick={onClick}
+      disabled={Component === "button" ? disabled || loading : undefined}
+      aria-busy={loading}
       className={[
         "text-button",
         variant === "secondary"
@@ -26,7 +31,7 @@ function TextButton({
         className,
       ].join(" ")}
     >
-      {children}
+      {loading ? loadingText : children}
     </Component>
   );
 }
