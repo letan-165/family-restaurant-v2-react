@@ -26,14 +26,14 @@ const platforms = [
 ];
 
 function ContactPage() {
-  useDocumentTitle("Lien he - Quan Co Le");
+  useDocumentTitle("Liên hệ - Quán Cô Lệ");
 
   return (
     <section className="section-bg-two py-12">
       <div className="page-wrap">
         <div className="card">
           <div className="mb-8 text-center">
-            <SectionTitle title="* LIEN HE *" center />
+            <SectionTitle title="* LIÊN HỆ *" center />
             <p className="mx-auto mt-4 max-w-2xl text-base text-stone-700">
               Mọi thắc mắc về chất lượng, dịch vụ, vui lòng liên hệ thông tin
               dưới đây để được hỗ trợ.
@@ -51,7 +51,7 @@ function ContactPage() {
 
             <div className="p-6 sm:p-8">
               <InfoText title="Địa chỉ cụ thể:">
-                <p>41 Nguyễn Công Hoan, Phường Cầu Kéo, TP.HCM</p>
+                <p>41 Nguyễn Công Hoan, Phường Cầu Kiệu, TP.HCM</p>
               </InfoText>
 
               <InfoText title="Liên lạc:">

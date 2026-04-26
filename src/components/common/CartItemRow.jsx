@@ -1,13 +1,21 @@
 import IconButton from "../button/IconButton.jsx";
 import { formatCurrency } from "../../utils/format.js";
 
-function CartItemRow({ checked, item, onDecrease, onIncrease, onToggle }) {
+function CartItemRow({
+  checked,
+  busy = false,
+  item,
+  onDecrease,
+  onDelete,
+  onIncrease,
+  onToggle,
+}) {
   return (
-    <label className="flex items-center gap-4 rounded-2xl border border-stone-200 bg-white p-4">
+    <div className="flex items-center gap-4 rounded-2xl border border-stone-200 bg-white p-4">
       <input
         type="checkbox"
         checked={checked}
-        onChange={() => onToggle(item.name)}
+        onChange={() => onToggle(item.id)}
         className="h-4 w-4 accent-brand-brown"
       />
 
@@ -24,7 +32,8 @@ function CartItemRow({ checked, item, onDecrease, onIncrease, onToggle }) {
         <div className="mt-3 flex items-center gap-3">
           <IconButton
             label={`Giảm số lượng ${item.name}`}
-            onClick={() => onDecrease(item.name)}
+            onClick={() => onDecrease(item.id)}
+            disabled={busy}
           >
             -
           </IconButton>
@@ -33,9 +42,18 @@ function CartItemRow({ checked, item, onDecrease, onIncrease, onToggle }) {
           </span>
           <IconButton
             label={`Tăng số lượng ${item.name}`}
-            onClick={() => onIncrease(item.name)}
+            onClick={() => onIncrease(item.id)}
+            disabled={busy}
           >
             +
+          </IconButton>
+          <IconButton
+            label={`Xóa ${item.name} khỏi giỏ hàng`}
+            onClick={() => onDelete(item.id)}
+            disabled={busy}
+            variant="outline"
+          >
+            ×
           </IconButton>
         </div>
       </div>
@@ -45,7 +63,7 @@ function CartItemRow({ checked, item, onDecrease, onIncrease, onToggle }) {
           {formatCurrency(item.price * item.quantity)}
         </p>
       </div>
-    </label>
+    </div>
   );
 }
 
