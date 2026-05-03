@@ -18,13 +18,17 @@ function OrderStatusCard({ order }) {
       </div>
 
       <div className="mt-4 flex items-center justify-between border-t border-stone-200 pt-4 text-sm">
-        <span className="text-stone-500">Tổng số lượng: {order.totalQuantity}</span>
+        <span className="text-stone-500">
+          Người nhận: {order.receiverName || "Chưa có"}
+        </span>
         <span className="font-semibold text-brand-brown">
           {formatCurrency(order.totalAmount)}
         </span>
       </div>
 
-      <p className="mt-3 text-sm text-stone-500">Nhấn để xem chi tiết đơn hàng</p>
+      <p className="mt-3 text-sm text-stone-500">
+        Nhấn để xem chi tiết đơn hàng
+      </p>
     </NavLink>
   );
 }

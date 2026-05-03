@@ -1,23 +1,30 @@
 import { useMemo, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { orderService } from "../api/services/orderService.js";
 import TextButton from "../components/button/TextButton.jsx";
 import OrderItemRow from "../components/common/OrderItemRow.jsx";
 import OrderSummaryCard from "../components/common/OrderSummaryCard.jsx";
 import FormField from "../components/text/FormField.jsx";
 import SectionTitle from "../components/text/SectionTitle.jsx";
-import { getOrderSummaryRows, profileView } from "../data/mockData.js";
+import { getOrderSummaryRows } from "../data/mockData.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
+import { normalizeProfile } from "../utils/userSession.js";
 import { formatCurrency } from "../utils/format.js";
 
 function OrderPage() {
   useDocumentTitle("Đặt món - Quán Cô Lệ");
 
   const location = useLocation();
-  const orderItems = location.state?.items || [];
+  const navigate = useNavigate();
+  const profile = normalizeProfile();
+  const cartId = location.state?.cartId;
+  const orderItems = useMemo(() => location.state?.items || [], [location.state]);
+  const [submitting, setSubmitting] = useState(false);
   const [receiver, setReceiver] = useState({
-    fullname: "",
+    receiverName: "",
     phone: "",
     address: "",
+    note: "",
   });
 
   const totalQuantity = useMemo(
@@ -35,11 +42,38 @@ function OrderPage() {
   }
 
   function fillFromProfile() {
-    setReceiver({
-      fullname: profileView.fullname,
-      phone: profileView.phone,
-      address: profileView.address,
-    });
+    setReceiver((current) => ({
+      ...current,
+      receiverName: profile.fullName || "",
+      phone: profile.phone || "",
+      address: profile.address || "",
+    }));
+  }
+
+  async function handleCreateOrder() {
+    if (!cartId || !orderItems.length) {
+      window.alert("Không có dữ liệu giỏ hàng để đặt món.");
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+
+      await orderService.createFromCart(cartId, {
+        receiverName: receiver.receiverName,
+        phone: receiver.phone,
+        address: receiver.address,
+        note: receiver.note,
+        itemCartIds: orderItems.map((item) => item.id),
+      });
+
+      window.alert("Đặt món thành công.");
+      navigate("/order-status");
+    } catch (error) {
+      window.alert(error.message || "Không thể đặt món.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -74,7 +108,7 @@ function OrderPage() {
 
                   <div className="mt-6 grid gap-4">
                     {orderItems.map((item) => (
-                      <OrderItemRow key={item.name} item={item} />
+                      <OrderItemRow key={item.id} item={item} />
                     ))}
                   </div>
                 </div>
@@ -91,25 +125,28 @@ function OrderPage() {
 
                   <div className="mt-6 grid gap-4">
                     <FormField
-                      htmlFor="fullname"
                       label="Tên người nhận"
-                      name="fullname"
-                      value={receiver.fullname}
+                      name="receiverName"
+                      value={receiver.receiverName}
                       onChange={handleChange}
                     />
                     <FormField
-                      htmlFor="phone"
                       label="Số điện thoại"
                       name="phone"
                       value={receiver.phone}
                       onChange={handleChange}
                     />
                     <FormField
-                      as="textarea"
-                      htmlFor="address"
                       label="Địa chỉ"
                       name="address"
                       value={receiver.address}
+                      onChange={handleChange}
+                    />
+                    <FormField
+                      as="textarea"
+                      label="Ghi chú"
+                      name="note"
+                      value={receiver.note}
                       onChange={handleChange}
                     />
                   </div>
@@ -124,10 +161,16 @@ function OrderPage() {
                 })}
                 actions={
                   <>
-                  <TextButton>Xác nhận đặt món</TextButton>
-                  <TextButton as={NavLink} to="/cart" variant="secondary">
-                    Quay lại giỏ hàng
-                  </TextButton>
+                    <TextButton
+                      loading={submitting}
+                      loadingText="Đang đặt món..."
+                      onClick={handleCreateOrder}
+                    >
+                      Xác nhận đặt món
+                    </TextButton>
+                    <TextButton as={NavLink} to="/cart" variant="secondary">
+                      Quay lại giỏ hàng
+                    </TextButton>
                   </>
                 }
               />
