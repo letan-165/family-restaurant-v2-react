@@ -1,20 +1,19 @@
 import { useEffect, useMemo, useState } from "react";
 import { cartItemService } from "../api/services/cartItemService.js";
 import { itemService } from "../api/services/itemService.js";
-import ItemCart from "../components/common/ItemCart.jsx";
+import ItemCard from "../components/common/ItemCard.jsx";
 import SectionTitle from "../components/text/SectionTitle.jsx";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 
 const MENU_SECTIONS = [
   { type: "MAIN", title: "MÓN CHÍNH" },
-  { type: "SIDE", title: "MÓN PHỤ" },
+  { type: "SIDE", title: "MÓN THÊM" },
   { type: "DRINK", title: "MÓN NƯỚC" },
 ];
 
 function MenuPage() {
   useDocumentTitle("Thực đơn - Quán Cô Lệ");
 
-  const [cartId, setCartId] = useState(null);
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -22,19 +21,15 @@ function MenuPage() {
   useEffect(() => {
     let active = true;
 
-    async function fetchData() {
+    async function fetchItems() {
       try {
-        const [itemsResponse, cartResponse] = await Promise.all([
-          itemService.getAll(),
-          cartItemService.getAll(),
-        ]);
+        const response = await itemService.getAll();
 
         if (!active) {
           return;
         }
 
-        setItems(itemsResponse?.result || []);
-        setCartId(cartResponse?.result?.cartId || null);
+        setItems(response?.result || []);
         setError("");
       } catch (fetchError) {
         if (!active) {
@@ -42,7 +37,6 @@ function MenuPage() {
         }
 
         setItems([]);
-        setCartId(null);
         setError(fetchError.message || "Không thể tải thực đơn.");
       } finally {
         if (active) {
@@ -51,7 +45,7 @@ function MenuPage() {
       }
     }
 
-    fetchData();
+    fetchItems();
 
     return () => {
       active = false;
@@ -69,20 +63,20 @@ function MenuPage() {
 
   async function addToCart(item) {
     try {
-      const nextCartId = cartId || (await cartItemService.getAll())?.result?.cartId;
+      const cartResponse = await cartItemService.getAll();
+      const cartId = cartResponse?.result?.cartId;
 
-      if (!nextCartId) {
+      if (!cartId) {
         window.alert("Không tìm thấy giỏ hàng.");
         return;
       }
 
       await cartItemService.create({
-        cartId: nextCartId,
+        cartId,
         itemId: item.id,
         quantity: 1,
       });
 
-      setCartId(nextCartId);
       window.alert("Thêm vào giỏ hàng thành công.");
     } catch (addError) {
       window.alert(addError.message || "Không thể thêm vào giỏ hàng.");
@@ -103,7 +97,7 @@ function MenuPage() {
         ) : (
           <>
             {menuSections.map((section) => (
-              <ItemCart
+              <ItemCard
                 key={section.type}
                 title={section.title}
                 items={section.items}

@@ -94,7 +94,8 @@ function CartPage() {
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
-  const isAllChecked = cartItems.length > 0 && selectedIds.length === cartItems.length;
+  const isAllChecked =
+    cartItems.length > 0 && selectedIds.length === cartItems.length;
   const groupedItems = cartItems.reduce((groups, item) => {
     if (!groups[item.category]) groups[item.category] = [];
     groups[item.category].push(item);
@@ -179,7 +180,9 @@ function CartPage() {
           </div>
 
           {loading ? (
-            <div className="card text-sm text-stone-600">Đang tải giỏ hàng...</div>
+            <div className="card text-sm text-stone-600">
+              Đang tải giỏ hàng...
+            </div>
           ) : error ? (
             <div className="card text-sm text-rose-600">{error}</div>
           ) : (

@@ -1,13 +1,12 @@
 import IconButton from "../button/IconButton.jsx";
 import { formatCurrency } from "../../utils/format.js";
 
-const STATUS_STYLES = {
-  ACTIVE: "bg-emerald-100 text-emerald-700",
-  INACTIVE: "bg-stone-200 text-stone-700",
-  SOLD_OUT: "bg-rose-100 text-rose-700",
-};
+function ItemCard({ items, onAddToCart, title }) {
+  function getPictureSrc(item) {
+    const picture = typeof item.picture === "string" ? item.picture.trim() : "";
+    return picture || "/food-bun.png";
+  }
 
-function ItemCart({ items, onAddToCart, title }) {
   return (
     <section className="mb-10">
       <div className="mb-4">
@@ -23,29 +22,18 @@ function ItemCart({ items, onAddToCart, title }) {
             className="overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm"
           >
             <img
-              src={item.picture}
+              src={getPictureSrc(item)}
               alt={item.name}
               className="h-40 w-full object-cover sm:h-48"
+              onError={(event) => {
+                event.currentTarget.src = "/food-bun.png";
+              }}
             />
 
             <div className="space-y-3 p-3 sm:p-4">
-              <div className="flex items-start justify-between gap-2">
-                <div className="flex min-w-0 flex-1 items-center gap-2 justify-between">
-                  <h3 className="truncate text-base font-bold text-brand-brown sm:text-lg">
-                    {item.name}
-                  </h3>
-                  <p className="shrink-0 text-xs text-stone-500 sm:text-sm">
-                    Đã bán: {item.sold}
-                  </p>
-                </div>
-
-                <span
-                  className={[
-                    "mt-1 h-3 w-3 shrink-0 rounded-full",
-                    STATUS_STYLES[item.status] || "bg-amber-100 text-amber-700",
-                  ].join(" ")}
-                />
-              </div>
+              <h3 className="truncate text-base font-bold text-brand-brown sm:text-lg">
+                {item.name}
+              </h3>
 
               <p className="line-clamp-2 text-sm leading-5 text-stone-600">
                 {item.description || "Chưa có mô tả."}
@@ -54,6 +42,10 @@ function ItemCart({ items, onAddToCart, title }) {
               <div className="flex items-center justify-between gap-4">
                 <p className="text-sm font-semibold text-brand-brown sm:text-base">
                   {formatCurrency(item.price)}
+                </p>
+
+                <p className="shrink-0 text-xs text-stone-500 sm:text-sm">
+                  Đã bán: {item.sold}
                 </p>
 
                 <IconButton
@@ -78,4 +70,4 @@ function ItemCart({ items, onAddToCart, title }) {
   );
 }
 
-export default ItemCart;
+export default ItemCard;
